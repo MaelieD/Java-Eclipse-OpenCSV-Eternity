@@ -7,6 +7,7 @@ public class Frame extends JFrame {
 	
 	public Frame()
 	{
+		// bob
 		//Définit un titre pour notre fenêtre
 		this.setTitle("Eternity");
 		//Définit sa taille : 400 pixels de large et 100 pixels de haut
