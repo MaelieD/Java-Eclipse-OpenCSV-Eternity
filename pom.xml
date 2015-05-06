@@ -2,61 +2,81 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.esiea.3a</groupId>
-	<artifactId>Eternity</artifactId>
+	<groupId>com.icauda</groupId>
+	<artifactId>tp-projet-glpoo</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Projet GLPOO</name>
-	<description>Projet sur le jeu Eternity.</description>
-	<!-- <url>http://www.icauda.com</url> -->
-
+	<name>Projet_GLPOO</name>
+	<description>PROJET glpoo.</description>
+	<!--<url>http://www.icauda.com</url>-->
 
 	<developers>
-		<!-- TODO Mettre votre nom ici, pour chaque membre de l'équipe. -->
+		<!-- Cordelia -->
 		<developer>
-			<name>Cordélia Bartmann</name>
+			<name>Cordelia Bartmann</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
 		</developer>
 		
+		<!-- Maelie -->
 		<developer>
-			<name>Maélie Dessapt</name>
+			<name>Maelie Dessapt</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
 		</developer>
 		
+		<!-- Maxime -->
 		<developer>
 			<name>Maxime Fernandez</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
 		</developer>
 		
+		<!-- Sami -->
+		<developer>
+			<name>Sami Kartit</name>
+			<roles>
+				<role>Developper</role>
+				<role>Etudiant</role>
+			</roles>
+			<organization>ESIEA</organization>
+		</developer>
+		
+		<!-- Alexandre -->
 		<developer>
 			<name>Alexandre Martini</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
 		</developer>
 		
+		<!-- Sylvain -->
 		<developer>
 			<name>Sylvain Torchin</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
 		</developer>
 		
+		<!-- Alexandre -->
 		<developer>
 			<name>Alexandre Vardon</name>
 			<roles>
+				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
 			<organization>ESIEA</organization>
@@ -83,6 +103,9 @@
 		<!-- Lib CSV -->
 		<opencsv.version>2.3</opencsv.version>
 		<csvengine.version>1.3.5</csvengine.version>
+
+		<!-- JFreeChart -->
+		<jfreechart.version>1.0.14</jfreechart.version>
 
 		<!-- Libs pour les rapports -->
 		<maven-site-plugin.version>3.0-beta-3</maven-site-plugin.version>
@@ -124,13 +147,21 @@
 			<version>${csvengine.version}</version>
 		</dependency>
 
+		<!-- JFreeChart -->
+		<dependency>
+			<groupId>org.jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>${jfreechart.version}</version>
+		</dependency>
+
+
 		<!-- Ci dessous des lib dont vous aurez besoin pour aller plus loin. -->
 
 	</dependencies>
 
 
 	<build>
-		<finalName>TP chien</finalName>
+		<finalName>Projet_GLPOO</finalName>
 
 		<plugins>
 			<plugin>
