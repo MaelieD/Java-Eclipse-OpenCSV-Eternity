@@ -1,10 +1,9 @@
 package fr.esiea.glpoo;
 
-public class Main {
+public class Partie {
 
 	public static void main(String[] args) {
-		// Nouveau départ
-		// meje
+		// TODO Auto-generated method stub
 
 	}
 
