@@ -3,83 +3,39 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.icauda</groupId>
-	<artifactId>tp-projet-glpoo</artifactId>
+	<artifactId>GLPOO_Eternity</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Projet_GLPOO</name>
-	<description>PROJET glpoo.</description>
-	<!--<url>http://www.icauda.com</url>-->
+	<name>TP Chien</name>
+	<description>TP avec des chiens.</description>
+	<url>http://www.icauda.com</url>
+
+	<licenses>
+		<license>
+			<name>Copyright ©1995-2013 icauda.com et Copyright ©2012 Developpez.com</name>
+			<comments>Les sources présentés sur cette page sont libres de droits, et vous pouvez les utiliser à votre convenance.</comments>
+		</license>
+	</licenses>
 
 	<developers>
-		<!-- Cordelia -->
+		<!-- Thierry -->
 		<developer>
-			<name>Cordelia Bartmann</name>
+			<name>Thierry Leriche-Dessirier</name>
 			<roles>
 				<role>Developper</role>
-				<role>Etudiant</role>
+				<role>Professeur</role>
 			</roles>
-			<organization>ESIEA</organization>
+			<organization>ICAUDA</organization>
 		</developer>
-		
-		<!-- Maelie -->
+
+		<!-- TODO Mettre votre nom ici, pour chaque membre de l'équipe. -->
 		<developer>
-			<name>Maelie Dessapt</name>
+			<name>Prénom Nom</name>
 			<roles>
-				<role>Developper</role>
 				<role>Etudiant</role>
 			</roles>
-			<organization>ESIEA</organization>
-		</developer>
-		
-		<!-- Maxime -->
-		<developer>
-			<name>Maxime Fernandez</name>
-			<roles>
-				<role>Developper</role>
-				<role>Etudiant</role>
-			</roles>
-			<organization>ESIEA</organization>
-		</developer>
-		
-		<!-- Sami -->
-		<developer>
-			<name>Sami Kartit</name>
-			<roles>
-				<role>Developper</role>
-				<role>Etudiant</role>
-			</roles>
-			<organization>ESIEA</organization>
-		</developer>
-		
-		<!-- Alexandre -->
-		<developer>
-			<name>Alexandre Martini</name>
-			<roles>
-				<role>Developper</role>
-				<role>Etudiant</role>
-			</roles>
-			<organization>ESIEA</organization>
-		</developer>
-		
-		<!-- Sylvain -->
-		<developer>
-			<name>Sylvain Torchin</name>
-			<roles>
-				<role>Developper</role>
-				<role>Etudiant</role>
-			</roles>
-			<organization>ESIEA</organization>
-		</developer>
-		
-		<!-- Alexandre -->
-		<developer>
-			<name>Alexandre Vardon</name>
-			<roles>
-				<role>Developper</role>
-				<role>Etudiant</role>
-			</roles>
-			<organization>ESIEA</organization>
+			<organization>Mon école</organization>
 		</developer>
 	</developers>
 
@@ -93,19 +49,8 @@
 		<!-- Lib de test -->
 		<junit.version>4.8.2</junit.version>
 
-		<!-- DB : vous pouvez utiliser ces versions pour aller plus loin -->
-		<mysql-connector-java.version>5.1.18</mysql-connector-java.version>
-		<hsqldb.version>2.2.8</hsqldb.version>
-
 		<!-- Lib de log -->
 		<log4j.version>1.2.13</log4j.version>
-
-		<!-- Lib CSV -->
-		<opencsv.version>2.3</opencsv.version>
-		<csvengine.version>1.3.5</csvengine.version>
-
-		<!-- JFreeChart -->
-		<jfreechart.version>1.0.14</jfreechart.version>
 
 		<!-- Libs pour les rapports -->
 		<maven-site-plugin.version>3.0-beta-3</maven-site-plugin.version>
@@ -115,6 +60,7 @@
 		<maven-surefire-plugin.version>2.9</maven-surefire-plugin.version>
 		<maven-surefire-report-plugin>2.9</maven-surefire-report-plugin>
 
+		<!-- TODO Mettre les autres lib a la suite -->
 
 	</properties>
 
@@ -127,41 +73,28 @@
 			<scope>test</scope>
 		</dependency>
 
+
 		<!-- log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-
-		<!-- Lib CSV -->
+		
+		<!-- OpenCSV -->
 		<dependency>
-			<groupId>net.sf.opencsv</groupId>
-			<artifactId>opencsv</artifactId>
-			<version>${opencsv.version}</version>
+    		<groupId>net.sf.opencsv</groupId>
+ 		    <artifactId>opencsv</artifactId>
+    		<version>2.3</version>
 		</dependency>
 
-		<dependency>
-			<groupId>fr.ybonnel</groupId>
-			<artifactId>csvengine</artifactId>
-			<version>${csvengine.version}</version>
-		</dependency>
-
-		<!-- JFreeChart -->
-		<dependency>
-			<groupId>org.jfree</groupId>
-			<artifactId>jfreechart</artifactId>
-			<version>${jfreechart.version}</version>
-		</dependency>
-
-
-		<!-- Ci dessous des lib dont vous aurez besoin pour aller plus loin. -->
+		<!-- TODO Mettre les autres lib a la suite -->
 
 	</dependencies>
 
 
 	<build>
-		<finalName>Projet_GLPOO</finalName>
+		<finalName>TP chien</finalName>
 
 		<plugins>
 			<plugin>
@@ -250,17 +183,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
-
-	<repositories>
-		<repository>
-			<id>ybonnel-release</id>
-			<url>https://repository-ybonnel.forge.cloudbees.com/release/</url>
-		</repository>
-		<repository>
-			<id>ybonnel-snapshot</id>
-			<url>https://repository-ybonnel.forge.cloudbees.com/snapshot/</url>
-		</repository>
-	</repositories>
 
 </project>
