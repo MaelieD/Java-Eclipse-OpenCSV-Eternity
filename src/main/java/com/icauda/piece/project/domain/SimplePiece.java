@@ -8,6 +8,7 @@ public class SimplePiece implements Piece{
 	private Integer id_gauche;	
 	private Integer id_droite;
 		
+	// Constructeur de SimplePiece
 	public SimplePiece(String id_piece, Integer id_haut, Integer id_bas, Integer id_gauche, Integer id_droite) {
 		this.id_piece = id_piece;
 		this.id_haut = id_haut;
@@ -15,12 +16,13 @@ public class SimplePiece implements Piece{
 		this.id_gauche = id_gauche;
 		this.id_droite = id_droite;
 	}
-		
+
+	// Conversion des attributs en chaine de caracteres
 	public String toString() {
 		return "("+id_haut+id_bas+id_gauche+id_droite+")";
 	}
 		
-	// plus getters/setters
+	// Getters/setters
 	public String getId_piece(){
 		return id_piece;
 	}

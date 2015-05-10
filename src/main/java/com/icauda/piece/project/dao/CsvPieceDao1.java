@@ -1,10 +1,7 @@
 package com.icauda.piece.project.dao;
 
+// Import de la methode readCsvFile contenue dans la classe CsvFileHelper pour l'utiliser
 import static com.icauda.piece.project.dao.csv.CsvFileHelper.readCsvFile;
-
-//import java.text.DateFormat;
-//import java.text.ParseException;
-//import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,27 +9,31 @@ import com.icauda.piece.project.domain.SimplePiece;
 
 public class CsvPieceDao1 implements PieceDao {
 
+	// Informations concernant la syntaxe et le chemin du fichier .CSV
     private final static char SEPARATOR = ';';
     private final static String RESOURCES_PATH = "src/main/resources/";
     private final static String PIECES_FILE_NAME = "piece.csv";
 
+    // Surcharge de la methode de recherche des donnees
     @Override
     public List<SimplePiece> findAllPieces() {
-
+    	// data : tableau de stockage des donnees brutes
         final List<String[] > data = readCsvFile(RESOURCES_PATH + PIECES_FILE_NAME, SEPARATOR);
 
+        // faces : liste d'objets crees a partir des donnees brutes de data
         final List<SimplePiece> pieces = dataToPieces(data);
 
+        // Renvoie la liste des objets nouvellement instancies
         return pieces;
     }
 
+    // Methode qui cree la liste d'objets instancies a partir des donnees brutes de data
     private List<SimplePiece> dataToPieces(List<String[] > data) {
-        final List<SimplePiece> pieces = new ArrayList<SimplePiece>();
+    	// Creation de la liste contenant les objets qui vont etre instancies ci-dessous
+    	final List<SimplePiece> pieces = new ArrayList<SimplePiece>();
 
-        try {
-            //final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            
-            // Recuperation des donnees du .csv et stockage dans un tab oneData
+        try {           
+            // Parcours des donnees brutes de data pour les stocker dans les variables adequates
             for (String[] oneData : data) {
                 final String id_piece = oneData[0];
                 final String id_haut = oneData[1];
@@ -46,14 +47,16 @@ public class CsvPieceDao1 implements PieceDao {
                 final Integer face_gauche = Integer.parseInt(id_gauche);
                 final Integer face_droite = Integer.parseInt(id_droite);
      
-
+                // Creation de l'objet grace aux variables obtenues ci-dessus
                 final SimplePiece piece = new SimplePiece(id_piece, face_haut, face_bas, face_gauche, face_droite);
+                // Ajout de l'objet dans la liste d'objets
                 pieces.add(piece);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        // Retourne la liste des objets nouvellement instancies
         return pieces;
     }
 }

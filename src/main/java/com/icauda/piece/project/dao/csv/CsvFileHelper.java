@@ -1,4 +1,3 @@
-
 package com.icauda.piece.project.dao.csv;
 
 import java.io.File;
@@ -11,20 +10,26 @@ import au.com.bytecode.opencsv.CSVReader;
 
 public class CsvFileHelper {
 
+	// Methode de recuperation des donnees brutes directement sur le fichier .CSV
     public static List<String[] > readCsvFile(String fileName, char separator) {
-        final List<String[] > data = new ArrayList<String[] >();
+        // Liste de stockage des donnees brutes
+    	final List<String[] > data = new ArrayList<String[] >();
 
         try {
+        	// Creation de l'objet fichier file
             final File file = new File(fileName);
+            // Creation de l'objet qui va permettre de lire le fichier fileName
             final FileReader fr = new FileReader(file);
 
+            // Methode de la lib OpenCsv qui va utiliser l'objet fr pour lire le fichier .CSV avec l'information du type de separateur
             final CSVReader csvReader = new CSVReader(fr, separator);
 
+            // Methode pour separer chaque ligne du fichier .CSV
             String[] nextLine = null;
             while ((nextLine = csvReader.readNext()) != null) {
                 final int size = nextLine.length;
 
-                // ligne vide
+                // Cas d'une ligne vide
                 if (size == 0) {
                     continue;
                 }
@@ -33,10 +38,11 @@ public class CsvFileHelper {
                     continue;
                 }
 
-                // ligne de commentaire
+                // Cas d'une ligne de commentaire
                 if (debut.startsWith("#")) {
                     continue;
                 }
+                // Ajout a la liste de la ligne recuperee dans le fichier .CSV
                 data.add(nextLine);
             }
 
@@ -46,6 +52,7 @@ public class CsvFileHelper {
             e.printStackTrace();
         }
 
+        // Retourne la liste de ligne (donnees brutes)
         return data;
     }
 }
