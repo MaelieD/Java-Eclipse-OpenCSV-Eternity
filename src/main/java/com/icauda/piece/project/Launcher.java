@@ -8,7 +8,8 @@ import com.icauda.piece.project.domain.*;
 public class Launcher {
 
     public static void main(String[] args) {
-
+    	// CREATION FACES
+    	
     	// Lancement de la recuperation des donnees dans le fichier piece.csv et les charger dans la Liste pieces
         final PieceDao pieceDao = new CsvPieceDao1();
         final List<SimplePiece> pieces = pieceDao.findAllPieces();
@@ -19,6 +20,8 @@ public class Launcher {
             System.out.println(piece);
         }
         
+        // CREATION PIECES
+        
         // Lancement de la recuperation des donnees dans le fichier face.csv et les charger dans la Liste faces
         final FaceDao faceDao = new CsvFaceDao1();
         final List<SimpleFace> faces = faceDao.findAllFaces();
@@ -28,5 +31,11 @@ public class Launcher {
         for (SimpleFace face : faces) {
             System.out.println(face);
         }
+        
+        // CREATION TABLEAU
+        //TableauPiece.getInstance(pieces);
+        
+        // CREATION FENETRE
+        Frame fenetre = new Frame(pieces);
     }
 }
