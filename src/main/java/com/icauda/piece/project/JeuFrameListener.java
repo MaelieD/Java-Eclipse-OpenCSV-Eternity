@@ -9,22 +9,17 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-//import javafx.scene.image.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import javax.swing.Timer;
-
-//import com.sun.javafx.tk.Toolkit;
 
 public class JeuFrameListener extends JFrame implements KeyListener, ActionListener, MouseListener{
 	
-	//Parametres Globaux
+	//Parametres generaux
 	private int size = 6; // taille plateau de 6x6
 	private String name; // methode timerWin pour recuperation du pseudo dans la PopUp
 	
@@ -33,18 +28,18 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	private JPanel panel;
 	private JButton restart;
 	private JButton help; 	
-	private JButton Rotate;
+	private JButton rotate;
 	private JLabel time = new JLabel("00:00");
-	private JButton[][] PiecePlat;
-	private JButton[][] PieceDec;
+	private JButton[][] piecePlat;
+	private JButton[][] pieceDec;
 	
 	//Plateau, dec, piece
-	Plateau Plat;
-	Plateau Dec;
+	private Plateau plat;
+	private Plateau dec;
 	
     //Timer
-	Timer timer1;
-    int var_time = 0;
+	private Timer timer1;
+    private int var_time = 0;
     ActionListener tache_timer = new ActionListener()  {
 		  public void actionPerformed(ActionEvent e1)  {
 			  // +1 et conversion en minute seconde
@@ -72,8 +67,7 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	    creat_dec(size,size);
         
         //Une fois que tout est cree, on autorise l'affichage
-        //frame.setSize(1024, 768); 
-	    frame.setSize(1152, 864);
+	    frame.setSize(1100, 864);
 		frame.setVisible(true);	
 		frame.setResizable(false);
 		
@@ -97,15 +91,6 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	    panel = (JPanel)frame.getContentPane();  
 	    panel.setLayout(null);
 	    panel.setBackground(new Color(0,0,0));
-	    //frame.setIconImage(image);
-	    
-	    frame.setUndecorated(true);
-	    frame.getRootPane().setWindowDecorationStyle(JRootPane.WARNING_DIALOG);
-	    
-	    /*
-	    frame.setDefaultLookAndFeelDecorated( false );
-	    frame.getRootPane( ).setWindowDecorationStyle( JDialog.DISPOSE_ON_CLOSE );
-		*/
 		
 	    
 	    //Creation des object graphique
@@ -114,12 +99,12 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	    //timer
 		Font font = new Font("Arial",Font.BOLD,50);
 		time.setFont(font);		
-		time.setBounds(430,30,500,50);	
+		time.setBounds(490,30,500,50);	
 		
 		//bouton restart
 	    restart = new JButton("Recommencer");	 
         restart.addActionListener(this);
-        restart.setBounds(10,125,215,30);
+        restart.setBounds(70,125,215,30);
         
         //bouton help
         help = new JButton("Aide");
@@ -128,40 +113,40 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 				Help.main();
 			}
 		});        
-        help.setBounds(390,125,215,30);
+        help.setBounds(450,125,215,30);
         
         //Bouton rotate
-        Rotate = new JButton("Rotation");       
-        Rotate.addActionListener(this);
-        Rotate.setBounds(790,125,215,30);
+        rotate = new JButton("Rotation");       
+        rotate.addActionListener(this);
+        rotate.setBounds(830,125,215,30);
         
         //On ajoute tout sa a la page
         panel.add(time);
         panel.add(restart);
         panel.add(help);
-        panel.add(Rotate);                
+        panel.add(rotate);                
       
 	}
 	
 	// CREATION DU PLATEAU
 	private void creat_plat(int x, int y){
 		
-		PiecePlat = new JButton[size][size];
-	    Plat = new Plateau(size,size,100);	
+		piecePlat = new JButton[size][size];
+	    plat = new Plateau(size,size,100);	
 		
 		//Creation des bouton des piece du plateau
 		for(int i=0; i<x ; i++){
 			for(int j=0; j<y ; j++){	
 				//bouton
-				PiecePlat[i][j] = new JButton();			    
-				PiecePlat[i][j].addActionListener(this); 
-				PiecePlat[i][j].addMouseListener(this); 
-				PiecePlat[i][j].setBounds(440+5*i+100*i, 205+5*j+100*j, 100,100);
-				PiecePlat[i][j].setContentAreaFilled(false); 
-				panel.add(PiecePlat[i][j]);
+				piecePlat[i][j] = new JButton();			    
+				piecePlat[i][j].addActionListener(this); 
+				piecePlat[i][j].addMouseListener(this); 
+				piecePlat[i][j].setBounds(440+5*i+100*i, 180+5*j+100*j, 100,100);
+				piecePlat[i][j].setContentAreaFilled(false); 
+				panel.add(piecePlat[i][j]);
 				//image				
-				Plat.pieces[i][j].setBounds(440+5*i+100*i, 205+5*j+100*j, 100,100);	
-				panel.add(Plat.pieces[i][j]);
+				plat.pieces[i][j].setBounds(440+5*i+100*i, 180+5*j+100*j, 100,100);	
+				panel.add(plat.pieces[i][j]);
 			}
 		}		
 	}
@@ -169,30 +154,30 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	// CREATION DU PLATEAU DE SELECTION DES PIECES
 	private void creat_dec(int x, int y){
 		
-		PieceDec = new JButton[size][size];
-		Dec = new Plateau(size,size,50);		
+		pieceDec = new JButton[size][size];
+		dec = new Plateau(size,size,50);		
 		//Dec.read_face_csv();
 		
 		//Creation des bouton des pieces du dec
 	    for(int i=0; i<x ; i++){
 			for(int j=0; j<y ; j++){		
 				//bouton
-				PieceDec[i][j] = new JButton();			
-				PieceDec[i][j].addActionListener(this); 
-			    PieceDec[i][j].addMouseListener(this); 			    
-			    PieceDec[i][j].setBounds(105+5*i+50*i, 310+5*j+50*j, 50,50); 
-			    PieceDec[i][j].setContentAreaFilled(false);	
-			    panel.add(PieceDec[i][j]);
+				pieceDec[i][j] = new JButton();			
+				pieceDec[i][j].addActionListener(this); 
+			    pieceDec[i][j].addMouseListener(this); 			    
+			    pieceDec[i][j].setBounds(75+5*i+50*i, 310+5*j+50*j, 50,50); 
+			    pieceDec[i][j].setContentAreaFilled(false);	
+			    panel.add(pieceDec[i][j]);
 			    //image		   
-			    Dec.pieces[i][j].setBounds(105+5*i+50*i, 310+5*j+50*j, 50,50);	
-			    panel.add(Dec.pieces[i][j]);
+			    dec.pieces[i][j].setBounds(75+5*i+50*i, 310+5*j+50*j, 50,50);	
+			    panel.add(dec.pieces[i][j]);
 			}
 		}	 
      }
 	
 
 	// Remise a zero du timer
-	private void ResetTimer(){
+	private void resetTimer(){
 		timer1.stop(); 
 		timer1 = new Timer(1000, tache_timer);		
 		timer1.start();  
@@ -200,13 +185,19 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	}	
 		
 	// Arret du timer si le jeu est gagne et box demandant le pseudo
-	
 	private void timerWin(){
-		if(Plat.win() == true){
+		if(plat.win() == true){
 			timer1.stop();
 			name = JOptionPane.showInputDialog(null, "Good Game ! U've found the Alien !!! \nVeuillez entrer un Pseudo", "Sauvegarde du Score", JOptionPane.QUESTION_MESSAGE);
+			
 		}
 	}
+	
+	// Message de Beginning du jeu
+	/*private void debut(){
+		//timer1.stop();
+		name = JOptionPane.showInputDialog(null, "Bienvenue dans Alien : Eternity !!!", "Welcome", JOptionPane.QUESTION_INFORMATION);
+	}*/
 	
 	// Evenement	
 	private GraphicPiece last = null;
@@ -215,12 +206,12 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		// Si bouton Restart presse
 		if(e.getSource() == restart){
 			System.out.println("Remise a Zero .");				
-			Plat.init();		
-			Dec.init();	
-			Dec.read_face();
-			Dec.update();
-			Plat.update();
-			ResetTimer();
+			plat.init();		
+			dec.init();	
+			dec.read_face();
+			dec.update();
+			plat.update();
+			resetTimer();
 		}
 		
 		// Si bouton help presse
@@ -229,10 +220,10 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		}
 		
 		// Si bouton Rotation presse	
-		if(e.getSource() == Rotate){
+		if(e.getSource() == rotate){
 			System.out.println("Rotation de la piece"); 
 			if (last != null){
-				last.rotateDirect();	
+				last.rotationDroite();	
 				last.update();
 			}	
 		}	
@@ -255,15 +246,15 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	public void mouseClicked(MouseEvent e) {	
 		 
 	    if (e.getButton() == MouseEvent.BUTTON1) {
-	           // Bouton GAUCHE enfoncé
+	           // Bouton GAUCHE enfonce
 	    	//Pour chaque piece du dec
 			for(int i=0; i<5 ; i++){
 				for(int j=0; j<5 ; j++){	
-					if(e.getSource() == PieceDec[i][j]){
-						Dec.pieces[i][j].rotateDirect();
+					if(e.getSource() == pieceDec[i][j]){
+						dec.pieces[i][j].rotationDroite();
 						//Plat.win();
 						timerWin();
-						last = Dec.pieces[i][j];
+						last = dec.pieces[i][j];
 					}				
 				}
 			}	
@@ -271,11 +262,11 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 			//Pour chaque piece du plat
 			for(int i=0; i<size ; i++){
 				for(int j=0; j<size ; j++){	
-					if(e.getSource() == PiecePlat[i][j]){					
-						Plat.pieces[i][j].rotateDirect();
+					if(e.getSource() == piecePlat[i][j]){					
+						plat.pieces[i][j].rotationDroite();
 						//Plat.win();
 						timerWin();
-						last = Plat.pieces[i][j];
+						last = plat.pieces[i][j];
 					}				
 				}
 			}	
@@ -286,18 +277,18 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	    	//Pour chaque piece du plat
 			for(int i=0; i<size ; i++){
 				for(int j=0; j<size ; j++){	
-					if(e.getSource() == PiecePlat[i][j]){
+					if(e.getSource() == piecePlat[i][j]){
 						
 						System.out.println("Ici ??");	
-						start = Plat.pieces[i][j];
+						start = plat.pieces[i][j];
 						
 						//On cherche la 1er place vide du dec
 						for(int k=0; k<size ; k++){
 							for(int l=0; l<size ; l++){	
-								if(Dec.pieces[k][l].faces[0].getId_face() == 0){
-									Plat.pieces[i][j].swapPiece(Dec.pieces[k][l]);
-									Plat.pieces[i][j].update();
-									Dec.pieces[k][l].update();	
+								if(dec.pieces[k][l].faces[0].getId_face() == 0){
+									plat.pieces[i][j].swapPiece(dec.pieces[k][l]);
+									plat.pieces[i][j].update();
+									dec.pieces[k][l].update();	
 								}				
 							}
 						}
@@ -311,7 +302,7 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 	    
 	}
 
-		public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub		
 	}
 
@@ -323,8 +314,8 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		//Pour chaque piece du dec
 		for(int i=0; i<size ; i++){
 			for(int j=0; j<size ; j++){	
-				if(e.getSource() == PieceDec[i][j]){
-					start = Dec.pieces[i][j];
+				if(e.getSource() == pieceDec[i][j]){
+					start = dec.pieces[i][j];
 				}				
 			}
 		}
@@ -332,8 +323,8 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		//Pour chaque piece du plat
 		for(int i=0; i<size ; i++){
 			for(int j=0; j<size ; j++){	
-				if(e.getSource() == PiecePlat[i][j]){
-					start = Plat.pieces[i][j];
+				if(e.getSource() == piecePlat[i][j]){
+					start = plat.pieces[i][j];
 				}				
 			}
 		}	
@@ -344,8 +335,6 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		}
 		
 	}
-	
-	
 		
 	private GraphicPiece stop = null;
 	public void mouseEntered(MouseEvent e) {
@@ -353,8 +342,8 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 		//Pour chaque piece du dec
 				for(int i=0; i<size ; i++){
 					for(int j=0; j<size ; j++){	
-						if(e.getSource() == PieceDec[i][j]){
-							stop = Dec.pieces[i][j];
+						if(e.getSource() == pieceDec[i][j]){
+							stop = dec.pieces[i][j];
 						}				
 					}
 				}
@@ -362,8 +351,8 @@ public class JeuFrameListener extends JFrame implements KeyListener, ActionListe
 				//Pour chaque piece du plat
 				for(int i=0; i<size ; i++){
 					for(int j=0; j<size ; j++){	
-						if(e.getSource() == PiecePlat[i][j]){
-							stop = Plat.pieces[i][j];
+						if(e.getSource() == piecePlat[i][j]){
+							stop = plat.pieces[i][j];
 						}				
 					}
 				}	

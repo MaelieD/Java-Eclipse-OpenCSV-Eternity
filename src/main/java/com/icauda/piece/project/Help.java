@@ -10,15 +10,8 @@ import java.awt.Panel;
 
 import javax.swing.JTextPane;
 
-import java.awt.Color;
-
 public class Help extends JFrame {
 
-	private JFrame help;
-
-	/**
-	 * @wbp.parser.entryPoint
-	 */
 	public static void main() {
 		JFrame about = new JFrame();
 		Font font = new Font("Comic Sans MS", Font.BOLD, 15);

@@ -1,13 +1,6 @@
 package com.icauda.piece.project;
 
-import java.util.List;
-
-import com.icauda.piece.project.dao.*;
-import com.icauda.piece.project.domain.*;
-
 public class Launcher {
-
-	private static int size = 6;
 	
     public static void main(String[] args) {
     	// CREATION FACES

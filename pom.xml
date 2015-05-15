@@ -7,35 +7,52 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>TP Chien</name>
-	<description>TP avec des chiens.</description>
+	<name>Eternity</name>
+	<description>Projet sur le jeu Eternity II.</description>
 	<url>http://www.icauda.com</url>
 
-	<licenses>
+	<!-- <licenses>
 		<license>
 			<name>Copyright ©1995-2013 icauda.com et Copyright ©2012 Developpez.com</name>
 			<comments>Les sources présentés sur cette page sont libres de droits, et vous pouvez les utiliser à votre convenance.</comments>
 		</license>
-	</licenses>
+	</licenses> -->
 
 	<developers>
-		<!-- Thierry -->
+		<!-- Cordelia -->
 		<developer>
-			<name>Thierry Leriche-Dessirier</name>
+			<name>Cordelia Bartmann</name>
 			<roles>
-				<role>Developper</role>
-				<role>Professeur</role>
+				<role>Etudiante</role>
 			</roles>
-			<organization>ICAUDA</organization>
+			<organization>ESIEA</organization>
 		</developer>
 
-		<!-- TODO Mettre votre nom ici, pour chaque membre de l'équipe. -->
+		<!-- Maelie -->
 		<developer>
-			<name>Prénom Nom</name>
+			<name>Maelie Dessapt</name>
 			<roles>
 				<role>Etudiant</role>
 			</roles>
-			<organization>Mon école</organization>
+			<organization>ESIEA</organization>
+		</developer>
+		
+		<!-- Sami -->
+		<developer>
+			<name>Sami Kartit</name>
+			<roles>
+				<role>Etudiant</role>
+			</roles>
+			<organization>ESIEA</organization>
+		</developer>
+		
+		<!-- Alexandre -->
+		<developer>
+			<name>Alexandre Vardon</name>
+			<roles>
+				<role>Etudiant</role>
+			</roles>
+			<organization>ESIEA</organization>
 		</developer>
 	</developers>
 
@@ -94,7 +111,7 @@
 
 
 	<build>
-		<finalName>TP chien</finalName>
+		<finalName>Eternity</finalName>
 
 		<plugins>
 			<plugin>
