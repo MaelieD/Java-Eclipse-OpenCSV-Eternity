@@ -41,6 +41,6 @@ public class Launcher {
         	e.printStackTrace();
         }*/
         
-        new Game();
+        new JeuFrameListener();
     }
 }

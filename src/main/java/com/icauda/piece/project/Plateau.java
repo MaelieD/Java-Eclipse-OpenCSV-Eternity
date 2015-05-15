@@ -55,8 +55,8 @@ public class Plateau {
         System.out.println("Liste des pieces");
        
         int k = 0;
-		for(int i = 0; i < size.x ; i++) {
-			for(int j = 0; j < size.y ; j++) {
+		for(int j = 0; j < size.x ; j++) {
+			for(int i = 0; i < size.y ; i++) {
 				//System.out.println(i+" : "+j+" : "+face[piecesList.get(k).getId_droite()]);
 				pieces[i][j].setFace(face[piecesList.get(k).getId_gauche()], face[piecesList.get(k).getId_haut()], face[piecesList.get(k).getId_droite()], face[piecesList.get(k).getId_bas()]);
 				k++;
@@ -64,10 +64,10 @@ public class Plateau {
 		}
 		
 		//On melange tout sa a la sauce random
-		melange_rnd();
+		//melange_rnd();
 		
 		//On fait des rotations a la sauce random			
-		retourne_rnd();		
+		//retourne_rnd();		
 		
 	}
 	
@@ -90,7 +90,7 @@ public class Plateau {
 			for(int i=0; i<size.x ; i++){
 				for(int j=0; j<size.y ; j++){
 					// piece selectionnee echangee avec une piece random entre 0 et 5
-					pieces[i][j].swapPiece(pieces[rnd(0,5)][rnd(0,5)]);					
+					pieces[i][j].swapPiece(pieces[random(0,5)][random(0,5)]);					
 				}
 			}
 		}
@@ -101,7 +101,7 @@ public class Plateau {
 			for(int i=0; i<size.x ; i++){
 				for(int j=0; j<size.y ; j++){		
 					// selection d'une piece autour de la piece courante
-					for(int r=0; r<rnd(0,5) ; r++){	
+					for(int r=0; r<random(0,5) ; r++){	
 						pieces[i][j].rotateDirect();
 					}									
 				}
@@ -155,7 +155,7 @@ public class Plateau {
 			return true;	
 		}
 		
-	private int rnd(int min,int max){		
+	private int random(int min,int max){		
 		return (int)(Math.random() * (max-min)) + min;
 	}
 		
