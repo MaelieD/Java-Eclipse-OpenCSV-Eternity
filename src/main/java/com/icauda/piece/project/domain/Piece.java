@@ -6,13 +6,15 @@ public interface Piece {
 	// Noms des methodes necessaires a surcharger
 	public String toString();
 	
-	String getId_piece();
+	String getType();
 	
-	Integer getId_haut();
-	
-	Integer getId_bas();
+	Integer getId_piece();
 	
 	Integer getId_gauche();
 	
+	Integer getId_haut();
+	
 	Integer getId_droite();
+	
+	Integer getId_bas();
 }

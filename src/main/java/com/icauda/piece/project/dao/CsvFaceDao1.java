@@ -35,14 +35,20 @@ public class CsvFaceDao1 implements FaceDao {
         try {         
             // Parcours des donnees brutes de data pour les stocker dans les variables adequates
             for (String[] oneData : data) {
-                final String id_face = oneData[0];
-                final String couleur_face = oneData[1];
+            	final String type = oneData[0];
+                final String id_face = oneData[1];
+                final String couleur_R = oneData[2];
+                final String couleur_G = oneData[3];
+                final String couleur_B = oneData[4];
 
                 // Conversion dans les types demandes : string to int
                 final Integer idface = Integer.parseInt(id_face);
-
+                final Integer couleurR = Integer.parseInt(couleur_R);
+                final Integer couleurG = Integer.parseInt(couleur_G);
+                final Integer couleurB = Integer.parseInt(couleur_B);
+                
                 // Creation de l'objet grace aux variables obtenues ci-dessus
-                final SimpleFace face = new SimpleFace(idface, couleur_face);
+                final SimpleFace face = new SimpleFace(type, idface, couleurR, couleurG, couleurB);
                 // Ajout de l'objet dans la liste d'objets
                 faces.add(face);
             }

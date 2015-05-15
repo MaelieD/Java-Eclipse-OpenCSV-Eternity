@@ -2,6 +2,7 @@ package com.icauda.piece.project.dao;
 
 // Import de la methode readCsvFile contenue dans la classe CsvFileHelper pour l'utiliser
 import static com.icauda.piece.project.dao.csv.CsvFileHelper.readCsvFile;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,20 +36,22 @@ public class CsvPieceDao1 implements PieceDao {
         try {           
             // Parcours des donnees brutes de data pour les stocker dans les variables adequates
             for (String[] oneData : data) {
-                final String id_piece = oneData[0];
-                final String id_haut = oneData[1];
-                final String id_bas = oneData[2];
-                final String id_gauche = oneData[3];
+            	final String type = oneData[0];
+                final String id_piece = oneData[1];
+                final String id_gauche = oneData[2];
+                final String id_haut = oneData[3];
                 final String id_droite = oneData[4];
+                final String id_bas = oneData[5];
 
                 // Conversion dans les types demandes : string to int
-                final Integer face_haut = Integer.parseInt(id_haut);
-                final Integer face_bas = Integer.parseInt(id_bas);
+                final Integer idpiece = Integer.parseInt(id_piece);
                 final Integer face_gauche = Integer.parseInt(id_gauche);
+                final Integer face_haut = Integer.parseInt(id_haut);
                 final Integer face_droite = Integer.parseInt(id_droite);
+                final Integer face_bas = Integer.parseInt(id_bas);
      
                 // Creation de l'objet grace aux variables obtenues ci-dessus
-                final SimplePiece piece = new SimplePiece(id_piece, face_haut, face_bas, face_gauche, face_droite);
+                final SimplePiece piece = new SimplePiece(type, idpiece, face_gauche, face_haut, face_droite, face_bas);
                 // Ajout de l'objet dans la liste d'objets
                 pieces.add(piece);
             }
