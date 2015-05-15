@@ -1,0 +1,22 @@
+# * Copyright (C)1995-2013 icauda.com
+# * Copyright (C)2012 Developpez.com
+# *
+# * Ces sources sont libres de droits, et vous pouvez les utiliser a votre 
+# * convenance. 
+# * 
+# * http://www.icauda.com 
+# *
+# * Unless required by applicable law or agreed to in writing, software
+# * distributed under the License is distributed on an "AS IS" BASIS,
+# * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# * See the License for the specific language governing permissions and
+# * limitations under the License.
+
+Nom;Nom complet;sexe;race;couleurs;poids
+
+Milou;Milou de Belgique;1;caniche;blanc;12,5
+Pluto;Pluto le chien Disney;1;golden_ret;jaune;24,0
+Lassie;Lassie des alpes;2;berger_all;blanc,noir;32,3
+Volt;Volt le super chien;1;caniche;blanc,noir;14,0
+Medor;Medor;1;rottweiler;gris;32,0
+ 
